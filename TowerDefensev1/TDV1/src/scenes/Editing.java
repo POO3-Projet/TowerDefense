@@ -5,9 +5,9 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 import helper.LoadSave;
-import code.Game;
+import main.Game;
 import objects.Tile;
-import ui.ToolBar;
+import ui.Toolbar;
 
 public class Editing extends GameScene implements SceneMethods {
 
@@ -16,12 +16,16 @@ public class Editing extends GameScene implements SceneMethods {
 	private int mouseX, mouseY;
 	private int lastTileX, lastTileY, lastTileId;
 	private boolean drawSelect;
-	private ToolBar toolbar;
+	private Toolbar toolbar;
+	private int ANIMATION_SPEED = 25;
+
+	private int animationIndex;
+	private int tick;
 
 	public Editing(Game game) {
 		super(game);
 		loadDefaultLevel();
-		toolbar = new ToolBar(0, 640, 640, 100, this);
+		toolbar = new Toolbar(0, 640, 640, 100, this);
 	}
 
 	private void loadDefaultLevel() {
@@ -30,6 +34,7 @@ public class Editing extends GameScene implements SceneMethods {
 
 	@Override
 	public void render(Graphics g) {
+		updateTick();
 
 		drawLevel(g);
 		toolbar.draw(g);
@@ -37,17 +42,38 @@ public class Editing extends GameScene implements SceneMethods {
 
 	}
 
+	private void updateTick() {
+		tick++;
+		if (tick >= ANIMATION_SPEED) {
+			tick = 0;
+			animationIndex++;
+			if (animationIndex >= 4)
+				animationIndex = 0;
+		}
+	}
+
 	private void drawLevel(Graphics g) {
 		for (int y = 0; y < lvl.length; y++) {
 			for (int x = 0; x < lvl[y].length; x++) {
 				int id = lvl[y][x];
-				g.drawImage(getSprite(id), x * 32, y * 32, null);
+				if (isAnimation(id)) {
+					g.drawImage(getSprite(id, animationIndex), x * 32, y * 32, null);
+				} else
+					g.drawImage(getSprite(id), x * 32, y * 32, null);
 			}
 		}
 	}
 
+	private boolean isAnimation(int spriteID) {
+		return game.getTileManager().isSpriteAnimation(spriteID);
+	}
+
 	private BufferedImage getSprite(int spriteID) {
 		return game.getTileManager().getSprite(spriteID);
+	}
+
+	private BufferedImage getSprite(int spriteID, int animationIndex) {
+		return game.getTileManager().getAniSprite(spriteID,animationIndex);
 	}
 
 	private void drawSelectedTile(Graphics g) {
@@ -132,9 +158,9 @@ public class Editing extends GameScene implements SceneMethods {
 		}
 
 	}
-	
+
 	public void keyPressed(KeyEvent e) {
-		if(e.getKeyCode() == KeyEvent.VK_R)
+		if (e.getKeyCode() == KeyEvent.VK_R)
 			toolbar.rotateSprite();
 	}
 

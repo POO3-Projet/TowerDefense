@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import helper.LoadSave;
-import code.Game;
+import main.Game;
 import ui.ActionBar;
 
 public class Playing extends GameScene implements SceneMethods {

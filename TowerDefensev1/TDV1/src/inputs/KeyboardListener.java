@@ -3,10 +3,10 @@ package inputs;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import static code.GameStates.*;
+import static main.GameStates.*;
 
-import code.Game;
-import code.GameStates;
+import main.Game;
+import main.GameStates;
 
 public class KeyboardListener implements KeyListener {
 	private Game game;

@@ -3,10 +3,10 @@ package scenes;
 import java.awt.Color;
 import java.awt.Graphics;
 
-import code.Game;
+import main.Game;
 import ui.MyButton;
 
-import static code.GameStates.*;
+import static main.GameStates.*;
 
 public class Settings extends GameScene implements SceneMethods {
 
@@ -37,7 +37,7 @@ public class Settings extends GameScene implements SceneMethods {
 	@Override
 	public void mouseClicked(int x, int y) {
 		if (bMenu.getBounds().contains(x, y))
-			setGameState(MENU);
+			SetGameState(MENU);
 
 	}
 

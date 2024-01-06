@@ -1,6 +1,6 @@
 package scenes;
 
-import code.Game;
+import main.Game;
 
 public class GameScene {
 

@@ -1,7 +1,7 @@
 package ui;
 
-import static code.GameStates.MENU;
-import static code.GameStates.setGameState;
+import static main.GameStates.MENU;
+import static main.GameStates.SetGameState;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -42,7 +42,7 @@ public class ActionBar extends Bar {
 
 	public void mouseClicked(int x, int y) {
 		if (bMenu.getBounds().contains(x, y))
-			setGameState(MENU);
+			SetGameState(MENU);
 
 	}
 

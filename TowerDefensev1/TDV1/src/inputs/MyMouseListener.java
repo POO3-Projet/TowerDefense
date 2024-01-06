@@ -4,8 +4,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-import code.Game;
-import code.GameStates;
+import main.Game;
+import main.GameStates;
 
 public class MyMouseListener implements MouseListener, MouseMotionListener {
 
@@ -53,15 +53,12 @@ public class MyMouseListener implements MouseListener, MouseMotionListener {
 			break;
 		default:
 			break;
-
 		}
-
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if (e.getButton() == MouseEvent.BUTTON1) {
-
 			switch (GameStates.gameState) {
 			case MENU:
 				game.getMenu().mouseClicked(e.getX(), e.getY());
@@ -77,9 +74,7 @@ public class MyMouseListener implements MouseListener, MouseMotionListener {
 				break;
 			default:
 				break;
-
 			}
-
 		}
 	}
 
@@ -100,9 +95,7 @@ public class MyMouseListener implements MouseListener, MouseMotionListener {
 			break;
 		default:
 			break;
-
 		}
-
 	}
 
 	@Override
@@ -122,7 +115,6 @@ public class MyMouseListener implements MouseListener, MouseMotionListener {
 			break;
 		default:
 			break;
-
 		}
 	}
 

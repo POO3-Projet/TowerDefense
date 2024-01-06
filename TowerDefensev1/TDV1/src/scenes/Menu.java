@@ -1,9 +1,9 @@
 package scenes;
 
 import java.awt.Graphics;
-import code.Game;
+import main.Game;
 import ui.MyButton;
-import static code.GameStates.*;
+import static main.GameStates.*;
 
 public class Menu extends GameScene implements SceneMethods {
 
@@ -48,11 +48,11 @@ public class Menu extends GameScene implements SceneMethods {
 	public void mouseClicked(int x, int y) {
 
 		if (bPlaying.getBounds().contains(x, y))
-			setGameState(PLAYING);
+			SetGameState(PLAYING);
 		else if (bEdit.getBounds().contains(x, y))
-			setGameState(EDIT);
+			SetGameState(EDIT);
 		else if (bSettings.getBounds().contains(x, y))
-			setGameState(SETTINGS);
+			SetGameState(SETTINGS);
 		else if (bQuit.getBounds().contains(x, y))
 			System.exit(0);
 	}

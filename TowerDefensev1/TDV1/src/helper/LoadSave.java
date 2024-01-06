@@ -15,7 +15,7 @@ public class LoadSave {
 
 	public static BufferedImage getSpriteAtlas() {
 		BufferedImage img = null;
-		InputStream is = LoadSave.class.getClassLoader().getResourceAsStream("\\ressources\\spriteatlas.png");
+		InputStream is = LoadSave.class.getClassLoader().getResourceAsStream("spriteatlas.png");
 
 		try {
 			img = ImageIO.read(is);
@@ -26,7 +26,7 @@ public class LoadSave {
 	}
 
 	public static void CreateFile() {
-		File txtFile = new File("src\\ressources\\test.txt");
+		File txtFile = new File("res/testTextFile.txt");
 
 		try {
 			txtFile.createNewFile();
@@ -37,7 +37,7 @@ public class LoadSave {
 	}
 
 	public static void CreateLevel(String name, int[] idArr) {
-		File newLevel = new File("src\\ressources\\" + name + ".txt");
+		File newLevel = new File("res/" + name + ".txt");
 		if (newLevel.exists()) {
 			System.out.println("File: " + name + " already exists!");
 			return;
@@ -66,10 +66,10 @@ public class LoadSave {
 	}
 
 	public static void SaveLevel(String name, int[][] idArr) {
-		File levelFile = new File("src\\ressources\\" + name + ".txt");
+		File levelFile = new File("res/" + name + ".txt");
 
 		if (levelFile.exists()) {
-			WriteToFile(levelFile, Utils.TwoDto1DintArr(idArr));
+			WriteToFile(levelFile, Utilz.TwoDto1DintArr(idArr));
 		} else {
 			System.out.println("File: " + name + " does not exists! ");
 			return;
@@ -96,11 +96,11 @@ public class LoadSave {
 	}
 
 	public static int[][] GetLevelData(String name) {
-		File lvlFile = new File("src\\ressources\\" + name + ".txt");
+		File lvlFile = new File("res/" + name + ".txt");
 
 		if (lvlFile.exists()) {
 			ArrayList<Integer> list = ReadFromFile(lvlFile);
-			return Utils.ArrayListTo2Dint(list, 20, 20);
+			return Utilz.ArrayListTo2Dint(list, 20, 20);
 
 		} else {
 			System.out.println("File: " + name + " does not exists! ");

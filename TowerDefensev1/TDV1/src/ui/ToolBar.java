@@ -1,7 +1,7 @@
 package ui;
 
-import static code.GameStates.MENU;
-import static code.GameStates.setGameState;
+import static main.GameStates.MENU;
+import static main.GameStates.SetGameState;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -13,7 +13,7 @@ import java.util.Map;
 import objects.Tile;
 import scenes.Editing;
 
-public class ToolBar extends Bar {
+public class Toolbar extends Bar {
 	private Editing editing;
 	private MyButton bMenu, bSave;
 	private Tile selectedTile;
@@ -24,7 +24,7 @@ public class ToolBar extends Bar {
 	private MyButton currentButton;
 	private int currentIndex = 0;
 
-	public ToolBar(int x, int y, int width, int height, Editing editing) {
+	public Toolbar(int x, int y, int width, int height, Editing editing) {
 		super(x, y, width, height);
 		this.editing = editing;
 		initButtons();
@@ -143,7 +143,7 @@ public class ToolBar extends Bar {
 
 	public void mouseClicked(int x, int y) {
 		if (bMenu.getBounds().contains(x, y))
-			setGameState(MENU);
+			SetGameState(MENU);
 		else if (bSave.getBounds().contains(x, y))
 			saveLevel();
 		else if (bWater.getBounds().contains(x, y)) {
